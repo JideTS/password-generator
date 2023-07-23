@@ -8,13 +8,6 @@ var mixedAlphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
 var stringNumbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialCharacters = ["!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", ">", "?", "@", "[", "]", "^", "_", "|", "}", "~"];
 
-// Declare and initialize user preference variables with default values
-
-var desiredPasswordLenght = 64;
-var letterType = "both";
-var special = true;
-var numbers = true;
-
 // A function that takes an array as a parameter and retrieves a random item from it
 
 function randomItemFromArray(x) {
@@ -24,22 +17,30 @@ return x[Math.ceil(Math.random() * (x.length -1))];
 // A function taking into account the user preferences and retrieving a random relevant letter for password generation
 function randomRelevantLetter() {
   var letter = "";
-  if (letterType === "both") {
+
+  if (document.getElementById("caseChoice3").checked) {
     letter = randomItemFromArray(mixedAlphabet);
   }
-  else if (letterType === "lower") {
-    letter = randomItemFromArray(lowerCaseAlphabetAlphabet);
+  else if (document.getElementById("caseChoice1").checked) {
+    letter = randomItemFromArray(lowerCaseAlphabet);
   }
-  else if (letterType === "upper") {
+  else if (document.getElementById("caseChoice2").checked) {
     letter = randomItemFromArray(upperCaseAlphabet);
   }
+
   return letter;
 }
 
 // A function taking into account the user preferences and retrieving a random relevant character for password generation
+
 function generateRelevantRandomItem () {
+
 var x = Math.random();
+
 var item = "";
+
+if (document.getElementById("specialChoice").checked && document.getElementById("numberChoice").checked) {
+
 if (x < 0.34) {
   item = randomRelevantLetter();
 }
@@ -49,13 +50,46 @@ else if ((x >= 0.34) && (x < 0.67)) {
 else if (x >= 0.67) {
   item = randomItemFromArray(specialCharacters);
 }
+
+}
+
+else if (document.getElementById("specialChoice").checked && !document.getElementById("numberChoice").checked) {
+
+  if (x < 0.5) {
+    item = randomRelevantLetter();
+  }
+
+  else if (x >= 0.5) {
+    item = randomItemFromArray(specialCharacters);
+  }
+
+}
+
+else if (!document.getElementById("specialChoice").checked && document.getElementById("numberChoice").checked) {
+
+  if (x < 0.5) {
+    item = randomRelevantLetter();
+  }
+
+  else if (x >= 0.5) {
+    item = randomItemFromArray(stringNumbers);
+  }
+
+}
+
+else {
+
+  item = randomRelevantLetter();
+
+}
+
 return item;
 }
 
 // A function taking into account the user preferences and retrieving a random relevant password
 function generatePassword () {
   var password = "";
-for (i = 0; i < desiredPasswordLenght; i++) {
+for (i = 0; i < numberOfCharacters.value; i++) {
 password = password + generateRelevantRandomItem();
 }
 return password
@@ -65,6 +99,12 @@ return password
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
+
+
+// Get references to the #numberOfCharacters element
+var numberOfCharacters = document.getElementById("numberOfCharacters");
+
+
 
 // Write password to the #password input
 function writePassword() {
@@ -76,7 +116,10 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+
+generateBtn.addEventListener("click", () => {
+  writePassword()
+});
 
 
 
@@ -84,14 +127,3 @@ generateBtn.addEventListener("click", writePassword);
 
 
 
-
-
-
-
-var test = randomItemFromArray(lowerCaseAlphabet);
-
-console.log(test);
-console.log(lowerCaseAlphabet.length)
-console.log(randomRelevantLetter());
-console.log(generateRelevantRandomItem());
-console.log(generatePassword());
