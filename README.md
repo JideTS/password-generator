@@ -32,7 +32,7 @@ Please refer to the LICENSE in the repo.
 
 ## Link to the deployed application
 
-
+https://jidets.github.io/password-generator/
 
 
 
