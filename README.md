@@ -10,7 +10,7 @@ N/A
 
 ## Usage
 
-To use this webpage, you can open the Chrome DevTools by pressing Command+Option+I (macOS) or Control+Shift+I (Windows) to review the code and validate it meets the acceptance criterias. You can also generate a new passwoerd according to your preferences using the provided interface.
+To use this webpage, you can open the Chrome DevTools by pressing Command+Option+I (macOS) or Control+Shift+I (Windows) to review the code and validate it meets the acceptance criterias. You can also generate a new password according to your preferences using the provided interface.
 
 ## Credits
 
@@ -21,6 +21,10 @@ OWASP (2023) Password special characters. https://owasp.org/www-community/passwo
 Mozilla (2023) Dialog box. https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
 
 Mozilla (2023) Math random function. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+
+Mozilla (2023) Radio buttons. https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio
+
+Mozilla (2023) Checkboxes. https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox
 
 ## License
 
