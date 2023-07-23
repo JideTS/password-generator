@@ -34,6 +34,9 @@ Please refer to the LICENSE in the repo.
 
 https://jidets.github.io/password-generator/
 
+## Screenshot of the deployed application
+
+<img width="1728" alt="A user interface to create a new password tailored to your needs" src="https://github.com/JideTS/password-generator/assets/20988563/34128c26-0802-4d06-a9e2-cff099b77090">
 
 
 
