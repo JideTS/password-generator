@@ -18,13 +18,13 @@ return x[Math.ceil(Math.random() * (x.length -1))];
 function randomRelevantLetter() {
   var letter = "";
 
-  if (document.getElementById("caseChoice3").checked) {
+  if (document.getElementById("upperChoice").checked && document.getElementById("lowerChoice").checked) {
     letter = randomItemFromArray(mixedAlphabet);
   }
-  else if (document.getElementById("caseChoice1").checked) {
+  else if (!document.getElementById("upperChoice").checked && document.getElementById("lowerChoice").checked) {
     letter = randomItemFromArray(lowerCaseAlphabet);
   }
-  else if (document.getElementById("caseChoice2").checked) {
+  else if (document.getElementById("upperChoice").checked && !document.getElementById("lowerChoice").checked) {
     letter = randomItemFromArray(upperCaseAlphabet);
   }
 
@@ -39,7 +39,7 @@ var x = Math.random();
 
 var item = "";
 
-if (document.getElementById("specialChoice").checked && document.getElementById("numberChoice").checked) {
+if ((document.getElementById("specialChoice").checked && document.getElementById("numberChoice").checked) && (document.getElementById("upperChoice").checked || document.getElementById("lowerChoice").checked))  {
 
 if (x < 0.34) {
   item = randomRelevantLetter();
@@ -53,7 +53,7 @@ else if (x >= 0.67) {
 
 }
 
-else if (document.getElementById("specialChoice").checked && !document.getElementById("numberChoice").checked) {
+else if (document.getElementById("specialChoice").checked && !document.getElementById("numberChoice").checked && (document.getElementById("upperChoice").checked || document.getElementById("lowerChoice").checked)) {
 
   if (x < 0.5) {
     item = randomRelevantLetter();
@@ -65,7 +65,7 @@ else if (document.getElementById("specialChoice").checked && !document.getElemen
 
 }
 
-else if (!document.getElementById("specialChoice").checked && document.getElementById("numberChoice").checked) {
+else if (!document.getElementById("specialChoice").checked && document.getElementById("numberChoice").checked && (document.getElementById("upperChoice").checked || document.getElementById("lowerChoice").checked)) {
 
   if (x < 0.5) {
     item = randomRelevantLetter();
@@ -77,11 +77,36 @@ else if (!document.getElementById("specialChoice").checked && document.getElemen
 
 }
 
-else {
+else if (document.getElementById("specialChoice").checked && document.getElementById("numberChoice").checked && !document.getElementById("upperChoice").checked && !document.getElementById("lowerChoice").checked) {
 
-  item = randomRelevantLetter();
+  if (x < 0.5) {
+    item = randomItemFromArray(specialCharacters);
+  }
+
+  else if (x >= 0.5) {
+    item = randomItemFromArray(stringNumbers);
+  }
 
 }
+
+else if (!document.getElementById("specialChoice").checked && !document.getElementById("numberChoice").checked && (document.getElementById("upperChoice").checked || document.getElementById("lowerChoice").checked)) {
+
+item = randomRelevantLetter();
+
+}
+
+else if  (document.getElementById("specialChoice").checked && !document.getElementById("numberChoice").checked && !document.getElementById("upperChoice").checked && !document.getElementById("lowerChoice").checked) {
+
+
+  item = randomItemFromArray(specialCharacters);
+}
+
+else if  (!document.getElementById("specialChoice").checked && document.getElementById("numberChoice").checked && !document.getElementById("upperChoice").checked && !document.getElementById("lowerChoice").checked) {
+
+  item = randomItemFromArray(stringNumbers);
+
+}
+
 
 return item;
 }
@@ -108,6 +133,12 @@ var numberOfCharacters = document.getElementById("numberOfCharacters");
 
 // Write password to the #password input
 function writePassword() {
+
+  if (!document.getElementById("specialChoice").checked && !document.getElementById("numberChoice").checked && !document.getElementById("upperChoice").checked && !document.getElementById("lowerChoice").checked) {
+
+  alert("Please select at least one type of character to generate your password");
+  }
+
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 

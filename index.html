@@ -20,22 +20,26 @@
         <form>
     
           <p>
-
-            <strong><label for="caseChoice3">Case</label></strong>
-            <div id="caseChoice">
+            <strong><label for="specialChoice">Complexity</label></strong>
+            <div id="complexity">
               <input
-                type="radio"
-                id="caseChoice1"
-                name="caseType"
-                value="lower"
-               />
-              <label for="caseChoice1">lower</label>
+                type="checkbox"
+                id="specialChoice"
+                name="specialChoice"
+                checked />
+              <label for="specialChoice">Symbols</label>
         
-              <input type="radio" id="caseChoice2" name="caseType" value="upper" />
-              <label for="caseChoice2">upper</label>
+              <input type="checkbox" id="numberChoice" name="numberChoice" checked />
+              <label for="numberChoice">Numbers</label>
+
         
-              <input type="radio" id="caseChoice3" name="caseType" value="both" checked/>
-              <label for="caseChoice3">both</label>
+              <input type="checkbox" id="upperChoice" name="upperChoice" checked />
+              <label for="upperChoice">Uppercase</label>
+
+              <input type="checkbox" id="lowerChoice" name="lowerChoice" checked />
+              <label for="lowerChoice">Lowercase</label>
+        
+        
             </div>
           </p>
 
@@ -172,27 +176,6 @@
                 
               </select>
             </label>
-          </p>
-
-
-
-
-
-          <p>
-            <strong><label for="specialChoice">Complexity</label></strong>
-            <div id="complexity">
-              <input
-                type="checkbox"
-                id="specialChoice"
-                name="specialChoice"
-                checked />
-              <label for="specialChoice">Include symbols</label>
-        
-              <input type="checkbox" id="numberChoice" name="numberChoice" checked />
-              <label for="numberChoice">Include numbers</label>
-        
-        
-            </div>
           </p>
 
 
